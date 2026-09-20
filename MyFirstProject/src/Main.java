@@ -1,49 +1,33 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // ❎ variable = A reusable container for a value.
-        //                          A variable behaves as if it was the value it contains.
+        Scanner scanner = new Scanner(System.in);
 
-        // 🟥 Primitive = simple value stored directly in memory (stack)
-        // 🟦 Reference = memory address (stack) that points to the (heap)
+        System.out.println("Enter your name: ");
+        String name = scanner.nextLine();
 
-        // 🟥 Primitive vs 🟦 Reference
-        //    ---------                      ---------
-        //    int                           string
-        //    double                    array
-        //    char                        object
-        //    boolean
+        System.out.println("Enter your age: ");
+        int age = scanner.nextInt();
 
-        int age = 21;
-        int year = 2025;
-        int quantity = 1;
+        System.out.println("What is your gpa: ");
+        double gpa = scanner.nextDouble();
 
-        double price = 19.99;
-        double gpa = 3.5;
-        double temperature = -12.5;
+        System.out.println("Are you a student? (true/false): ");
+        boolean isStudent = scanner.nextBoolean();
 
-        char grade = 'A';
-        char symbol = '!';
-        char currency = '$';
+        System.out.println("Hello " + name);
+        System.out.println("You are " + age + " years old");
+        System.out.println("Your gpa is: " + gpa);
 
-        boolean isStudent = true;
-        boolean forSale = false;
-        boolean isOnline = true;
-
-        String name = "Bro Code";
-        String food = "pizza";
-        String email = "fake123@gmail.com";
-        String car = "Mustang";
-        String color = "red";
-
-        System.out.println("Your choice is a " + color + " " + year + " " + car);
-        System.out.println("The price is: " + currency + price);
-
-        if(forSale){
-            System.out.println("There is a " + car + " for sale");
+        if(isStudent){
+            System.out.println("You are enrolled in classes");
         }
         else{
-            System.out.println("The " + car + " is not for sale");
+            System.out.println("You are NOT enrolled in classes");
         }
+
+        scanner.close();
     }
 }
