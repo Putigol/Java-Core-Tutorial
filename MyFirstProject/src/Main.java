@@ -1,20 +1,24 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(Math.PI);
-        System.out.println(Math.E);
+        Scanner scanner = new Scanner(System.in);
 
-        double result;
+        double a;
+        double b;
+        double c;
 
-        result = Math.pow(3, 4);
-        result = Math.abs(-5);
-        result = Math.sqrt(16);
-        result = Math.round(3.14);
-        result = Math.ceil(3.14);
-        result = Math.floor(3.14);
-        result = Math.max(10, 20);
-        result = Math.min(10, 20);
+        System.out.print("Enter the length of side A: ");
+        a = scanner.nextDouble();
 
-        System.out.println(result);
+        System.out.print("Enter the length of side B: ");
+        b = scanner.nextDouble();
+
+        c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+        System.out.println("The hypotenuse is: " + c + "cm");
+
+        scanner.close();
     }
 }
