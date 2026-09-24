@@ -2,20 +2,22 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int temp = 20;
-        boolean isSunny = true;
 
-// Sử dụng && (AND)
-        if (temp <= 30 && temp >= 0 && isSunny) {
-            System.out.println("The weather is good and it is sunny outside");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your new username: ");
+        String username = scanner.nextLine();
+
+// Kiểm tra độ dài (4-12 ký tự)
+        if(username.length() < 4 || username.length() > 12) {
+            System.out.println("Username must be between 4 through 12 characters");
         }
-// Sử dụng ! (NOT)
-        else if (temp <= 30 && temp >= 0 && !isSunny) {
-            System.out.println("It is cloudy outside");
+// Kiểm tra ký tự không hợp lệ (space hoặc underscore)
+        else if(username.contains(" ") || username.contains("_")) {
+            System.out.println("Username must not contain spaces or underscores");
         }
-// Sử dụng || (OR)
-        else if (temp > 30 || temp < 0) {
-            System.out.println("The weather is bad");
+        else {
+            System.out.println("Welcome " + username);
         }
+        scanner.close();
     }
 }
