@@ -1,30 +1,23 @@
-
-import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-//        for (int i = 10; i>0; i-=2) {
-//            System.out.println(i);
+    public static void main(String[] args) {
+//        for (int i = 1; i <= 10; i++) {
+//            if (i == 5) {
+//                break; // Thoát vòng lặp khi i = 5
+//            }
+//            System.out.println("Gia tri i: " + i);
 //        }
+//        System.out.println("Da thoat vong lap!");
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                continue; // Bỏ qua bước in khi i = 3, chuyển sang i = 4
+            }
+            System.out.println("Gia tri i: " + i);
+        }
 
-//    Scanner scanner = new Scanner(System.in);
-//    System.out.println("Enter how many times you want to loop: ");
-//    int max = scanner.nextInt();
-//
-//    for (int i = 0; i < max; i++) {
-//        System.out.println("Loop iteration: " + i);
-//    }
-
-      Scanner scanner=new Scanner(System.in);
-      System.out.println(" How many times you want to loop: ");
-      int start=10;
-
-      for (int i=0;i>0;i--){
-        System.out.println(i);
-        Thread.sleep(1000);
-      }
-
-      System.out.println("Happy New Year!");
     }
-
 }
+
+
+
+
+
