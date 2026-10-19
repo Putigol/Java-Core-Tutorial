@@ -1,21 +1,25 @@
-import  java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args){
+        System.out.print("What number of food do you want: ");
+        int size = scanner.nextInt();
+        scanner.nextLine(); // Xóa bộ đệm sau khi nhập số
 
-        // array = a collection of values of the same data type
-        //              * think of it as a variable that can store more than 1 value *
+        String[] foods = new String[size];
 
-        String[] fruits = {"apple", "orange", "banana", "coconut"};
-
-        //fruits[0] = "pineapple";
-        //int numOfFruits = fruits.length;
-        //Arrays.sort(fruits);
-        //Arrays.fill(fruits, "pineapple");
-
-        for(String fruit : fruits){
-            System.out.println(fruit);
+        for (int i = 0; i < foods.length; i++) {
+            System.out.print("Enter a food: ");
+            foods[i] = scanner.nextLine();
         }
+
+        System.out.println("Here is your food:");
+        for (String food : foods) {
+            System.out.println(food);
+        }
+
+        scanner.close();
     }
 }
