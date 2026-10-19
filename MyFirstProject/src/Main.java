@@ -1,22 +1,19 @@
 public class Main {
+
+    static int x = 3; //CLASS
+
     public static void main(String[] args){
 
-// overloaded methods = methods that share the same name,
-//                                          but different parameters
-//                                          signature = name + parameters
+        int x = 1; //LOCAL
 
-        String pizza = bakePizza("flat-bread", "mozzarella", "pepperoni");
+        System.out.println(x);
 
-        System.out.println(pizza);
+        doSomething();
+    }
+    static void doSomething(){
 
-    }
-    static String bakePizza(String bread){
-        return bread + " pizza";
-    }
-    static String bakePizza(String bread, String cheese){
-        return cheese + " " + bread + " pizza";
-    }
-    static String bakePizza(String bread, String cheese, String topping){
-        return topping + " " + cheese + " " + bread + " pizza";
+        int x = 2; //LOCAL
+
+        System.out.println(x);
     }
 }
