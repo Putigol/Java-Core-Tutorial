@@ -1,29 +1,26 @@
-import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) {
-        int[] numbers = {1, 2, 3, 4, 5, 6, 7};
-        int target = 2;
-        boolean isFound = false;
+    public static void main(String[] args){
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] == target) {
-                System.out.println("Element found at index " + i);
-                isFound = true;
-                break;
-            }
+        // varargs = allow a method to accept a varying # of arguments
+        //                  makes methods more flexible, no need for overloaded methods
+        //                  java will pack the arguments into an array
+        //                  ... (ellipsis)
+
+        System.out.println(average(1, 2, 3, 4));
+
+    }
+    static double average(double... numbers){
+
+        double sum = 0;
+
+        if(numbers.length == 0){
+            return 0;
         }
 
-        if (!isFound) {
-            System.out.println("Element not found in the array");
+        for(double number : numbers){
+            sum += number;
         }
-        String[] fruits = {"apple", "orange", "banana"};
-        String tar = "orange";
 
-        for (int i = 0; i < fruits.length; i++) {
-            if (fruits[i].equals(tar)) {
-                System.out.println("Element found at index " + i);
-            }
-        }
+        return sum / numbers.length;
     }
 }
