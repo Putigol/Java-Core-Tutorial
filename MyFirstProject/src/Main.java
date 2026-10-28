@@ -1,40 +1,57 @@
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+// 1. Mảng câu hỏi
+        String[] questions = {
+                "What is the main function of a router?",
+                "Which part of the computer is considered the brain?",
+                "What year was Facebook launched?",
+                "Who is known as the father of computers?",
+                "What was the first programming language?"
+        };
 
-        // 2D array = An array where each element is an array
-        // Useful for storing a matrix of data
+        // 2. Mảng 2 chiều chứa các tùy chọn
+        String[][] options = {
+                {"1. Storing files", "2. Encrypting data", "3. Directing internet traffic", "4. Managing passwords"},
+                {"1. CPU", "2. Hard drive", "3. RAM", "4. GPU"},
+                {"1. 2000", "2. 2004", "3. 2006", "4. 2008"},
+                {"1. Steve Jobs", "2. Bill Gates", "3. Alan Turing", "4. Charles Babbage"},
+                {"1. Cobalt", "2. C", "3. Fortran", "4. Assembly"}
+        };
 
-        //-----------------------
-        //   EXAMPLE 1
-        //-----------------------
+        // 3. Mảng đáp án đúng (dạng số nguyên)
+        int[] answers = {3, 1, 2, 4, 3};
 
-        String[][] groceries = {{"apple", "orange", "banana"},
-                {"potato", "onion", "carrot"},
-                {"chicken", "pork", "beef", "fish"}};
+        // 4. Biến khởi tạo
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;
+        int guess;
 
-        groceries[2][1] = "eggs";
+        System.out.println("Welcome to the Java quiz game!\n******************************");
 
-        for(String[] foods : groceries){
-            for(String food : foods){
-                System.out.print(food + " ");
+        // 5. Vòng lặp chính
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            for (String option : options[i]) {
+                System.out.println(option);
             }
-            System.out.println();
+
+            System.out.print("Enter your guess: ");
+            guess = scanner.nextInt();
+
+            // 6. Kiểm tra đáp án
+            if (guess == answers[i]) {
+                System.out.println("Correct!\n******************************");
+                score++;
+            } else {
+                System.out.println("Wrong!\n******************************");
+            }
         }
 
-        //-----------------------
-        //   EXAMPLE 2
-        //-----------------------
+        // 7. Hiển thị kết quả
+        System.out.println("Your final score is " + score + " out of " + questions.length);
 
-        char[][] telephone = {{'1', '2', '3'},
-                {'4', '5', '6'},
-                {'7', '8', '9'},
-                {'*', '0', '#'}};
-
-        for(char[] row : telephone){
-            for(char number : row){
-                System.out.print(number + " ");
-            }
-            System.out.println();
-        }
+        scanner.close();
     }
 }
