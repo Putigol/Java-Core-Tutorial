@@ -1,14 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-// Inheritance = One class inherits the attributes and methods
-// from another class.
+        Person person = new Person("Tom", "Riddle");
+        Student student = new Student("Harry", "Potter", 3.25);
+        Employee employee = new Employee("Rubeus", "Hagrid", 50000);
 
-        Dog dog = new Dog();
-        Cat cat = new Cat();
-        Plant plant = new Plant();
+        person.showName();
+        student.showName();
+        employee.showName();
 
-        plant.photosynthesize();
-        cat.speak();
-        dog.eat();
+        student.showGPA();
+        employee.showSalary();
     }
 }
