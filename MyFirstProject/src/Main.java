@@ -1,26 +1,22 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-// Khởi tạo ArrayList chứa các loại trái cây
-        ArrayList<String> fruits = new ArrayList();
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> foods = new ArrayList();
 
-        fruits.add("apple");
-        fruits.add("orange");
-        fruits.add("banana");
-        fruits.add("coconut");
+        System.out.print("Enter the number of food you would like: ");
+        int numOfFood = scanner.nextInt();
+        scanner.nextLine(); // Xóa bộ đệm
 
-        // Các thao tác cơ bản
-        fruits.remove(0);         // Xóa phần tử tại index 0
-        fruits.set(0, "pineapple"); // Thay thế phần tử tại index 0
-
-        // Sắp xếp
-        Collections.sort(fruits);
-
-        // Duyệt qua danh sách
-        for (String fruit : fruits) {
-            System.out.println(fruit);
+        for (int i = 1; i <= numOfFood; i++) {
+            System.out.print("Enter food #" + i + ": ");
+            String food = scanner.nextLine();
+            foods.add(food);
         }
+
+        System.out.println("My array list of food: " + foods);
+        scanner.close();
     }
 }
