@@ -1,33 +1,28 @@
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Các phương pháp ghi file phổ biến:
-        // FileWriter = Cho file văn bản nhỏ hoặc trung bình
-        // BufferedWriter = Hiệu suất cao hơn cho nhiều dữ liệu
-        // PrintWriter = Tốt nhất cho dữ liệu có cấu trúc
-        // FileOutputStream = Tốt nhất cho file nhị phân
+        // Đường dẫn file cần đọc
+        String filePath = "C:\\Users\\Admin\\Downloads\\VerbaGuard_English ẩn tác giả.docx";
 
-        String filePath = "test.txt";
-        String textContent = """
-            Roses are Red
-            Violets are Blue
-            BOOTY BOOTY BOOTY
-            ROCKIN' EVERWHERE!
-            """;
+        // Sử dụng try-with-resources để tự động đóng reader
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
 
-        try(FileWriter writer = new FileWriter(filePath)){
-            writer.write(textContent);
-            System.out.println("File has been written");
+            String line;
+            // Đọc file từng dòng cho đến khi hết dữ liệu (null)
+            while((line = reader.readLine()) != null){
+                System.out.println(line);
+            }
         }
         catch(FileNotFoundException e){
-            System.out.println("Could not locate file location");
+            System.out.println("Could not locate file");
         }
         catch(IOException e){
-            System.out.println("Could not write file");
+            System.out.println("Something went wrong");
         }
     }
 }
