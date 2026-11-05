@@ -1,31 +1,33 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Exception = An event that interrupts the normal flow of a program
-        //                      (Dividing by zero, file not found, mismatch input type)
-        //                      Surround any dangerous code with a try{} block
-        //                       try{}, catch{}, finally{}
+        // Các phương pháp ghi file phổ biến:
+        // FileWriter = Cho file văn bản nhỏ hoặc trung bình
+        // BufferedWriter = Hiệu suất cao hơn cho nhiều dữ liệu
+        // PrintWriter = Tốt nhất cho dữ liệu có cấu trúc
+        // FileOutputStream = Tốt nhất cho file nhị phân
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Enter a number: ");
-            int number = scanner.nextInt();
-            System.out.println(number);
+        String filePath = "test.txt";
+        String textContent = """
+            Roses are Red
+            Violets are Blue
+            BOOTY BOOTY BOOTY
+            ROCKIN' EVERWHERE!
+            """;
+
+        try(FileWriter writer = new FileWriter(filePath)){
+            writer.write(textContent);
+            System.out.println("File has been written");
         }
-        catch (InputMismatchException e) {
-            System.out.println("That wasn't a number!");
+        catch(FileNotFoundException e){
+            System.out.println("Could not locate file location");
         }
-        catch (ArithmeticException e) {
-            System.out.println("YOU CAN'T DIVIDE BY ZERO!");
-        }
-        catch (Exception e) {
-            // SAFETY NET
-            System.out.println("Something went wrong");
-        }
-        finally {
-            System.out.println("This always executes");
+        catch(IOException e){
+            System.out.println("Could not write file");
         }
     }
 }
