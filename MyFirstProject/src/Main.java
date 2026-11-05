@@ -1,20 +1,15 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Animal animal;
 
-        System.out.print("Would you like a dog or a cat? (1 = dog, 2 = cat): ");
-        int choice = scanner.nextInt();
+        // Họ giúp bảo vệ dữ liệu đối tượng và thêm các quy tắc để truy cập hoặc sửa đổi chúng.
+        // GETTERS = Các phương thức làm cho một trường có thể ĐỌC được.
+        // SETTERS = Các phương thức làm cho một trường có thể GHI được.
 
-        if(choice == 1){
-            animal = new Dog();
-            animal.speak();
-        }
-        else if(choice == 2){
-            animal = new Cat();
-            animal.speak();
-        }
+        Car car = new Car("Charger", "Yellow", 10000);
+
+        car.setColor("Blue");
+        car.setPrice(5000);
+
+        System.out.println(car.getColor() + " " + car.getModel() + " " + car.getPrice());
     }
 }
