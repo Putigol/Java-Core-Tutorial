@@ -1,28 +1,37 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
-        // Đường dẫn file cần đọc
-        String filePath = "C:\\Users\\Admin\\Downloads\\VerbaGuard_English ẩn tác giả.docx";
+        Scanner scanner = new Scanner(System.in);
+        File file = new File("Music.wav"); // Thay đổi tên file theo file .wav của bạn
 
-        // Sử dụng try-with-resources để tự động đóng reader
-        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+        try (AudioInputStream audioStream = AudioSystem.getAudioInputStream(file)) {
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
 
-            String line;
-            // Đọc file từng dòng cho đến khi hết dữ liệu (null)
-            while((line = reader.readLine()) != null){
-                System.out.println(line);
+            String response = "";
+
+            while (!response.equals("Q")) {
+                System.out.println("P = Play, S = Stop, R = Reset, Q = Quit");
+                System.out.print("Nhập lựa chọn của bạn: ");
+                response = scanner.next().toUpperCase();
+
+                switch (response) {
+                    case ("P") -> clip.start();
+                    case ("S") -> clip.stop();
+                    case ("R") -> clip.setMicrosecondPosition(0);
+                    case ("Q") -> clip.close();
+                    default -> System.out.println("Lựa chọn không hợp lệ");
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Đã xảy ra lỗi: " + e.getMessage());
         }
-        catch(FileNotFoundException e){
-            System.out.println("Could not locate file");
-        }
-        catch(IOException e){
-            System.out.println("Something went wrong");
-        }
+        System.out.println("Tạm biệt!");
+        scanner.close();
     }
 }
