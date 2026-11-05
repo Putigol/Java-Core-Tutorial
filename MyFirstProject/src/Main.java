@@ -1,18 +1,16 @@
 public class Main {
     public static void main(String[] args) {
 
-        // Aggregation = Represents a "has-a" relationship between objects.
-        // One object contains another object as part of its structure,
-        // but the contained object/s can exist independently.
+        // Composition = Represents a "part-of" relationship between objects.
+        //                            For example, an Engine is "part of" a Car.
+        //                            Allows complex objects to be constructed from smaller objects.
 
-        Book book1 = new Book("The Fellow of the Ring", 423);
-        Book book2 = new Book("The Two Towers", 352);
-        Book book3 = new Book("The Return of the King", 416);
+        Car car = new Car("Corvette", 2025, "V8");
 
-        Book[] books = {book1, book2, book3};
+        System.out.println(car.model);
+        System.out.println(car.year);
+        System.out.println(car.engine.type);
 
-        Library library = new Library("NYC Public Library", 1897, books);
-
-        library.displayInfo();
+        car.start();
     }
 }
