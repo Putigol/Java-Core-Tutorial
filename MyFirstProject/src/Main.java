@@ -1,16 +1,18 @@
 public class Main {
     public static void main(String[] args) {
 
-        // Composition = Represents a "part-of" relationship between objects.
-        //                            For example, an Engine is "part of" a Car.
-        //                            Allows complex objects to be constructed from smaller objects.
+        // Wrapper classes = Allow primitive values (int, char, double, boolean)
+        //                                   to be used as objects. "Wrap them in an object"
+        //                                   Generally, don't wrap primitives unless you need an object.
+        //                                   Allows use of Collections Framework and static utility methods.
 
-        Car car = new Car("Corvette", 2025, "V8");
+        // Autoboxing
+        Integer a = 123;
+        Double b = 3.14;
+        Character c = '$';
+        Boolean d = true;
 
-        System.out.println(car.model);
-        System.out.println(car.year);
-        System.out.println(car.engine.type);
-
-        car.start();
+        // Unboxing
+        int x = a;
     }
 }
