@@ -1,18 +1,26 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
+// Khởi tạo ArrayList chứa các loại trái cây
+        ArrayList<String> fruits = new ArrayList();
 
-        // Wrapper classes = Allow primitive values (int, char, double, boolean)
-        //                                   to be used as objects. "Wrap them in an object"
-        //                                   Generally, don't wrap primitives unless you need an object.
-        //                                   Allows use of Collections Framework and static utility methods.
+        fruits.add("apple");
+        fruits.add("orange");
+        fruits.add("banana");
+        fruits.add("coconut");
 
-        // Autoboxing
-        Integer a = 123;
-        Double b = 3.14;
-        Character c = '$';
-        Boolean d = true;
+        // Các thao tác cơ bản
+        fruits.remove(0);         // Xóa phần tử tại index 0
+        fruits.set(0, "pineapple"); // Thay thế phần tử tại index 0
 
-        // Unboxing
-        int x = a;
+        // Sắp xếp
+        Collections.sort(fruits);
+
+        // Duyệt qua danh sách
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
     }
 }
