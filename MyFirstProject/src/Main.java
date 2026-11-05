@@ -1,22 +1,31 @@
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<String> foods = new ArrayList();
 
-        System.out.print("Enter the number of food you would like: ");
-        int numOfFood = scanner.nextInt();
-        scanner.nextLine(); // Xóa bộ đệm
+        // Exception = An event that interrupts the normal flow of a program
+        //                      (Dividing by zero, file not found, mismatch input type)
+        //                      Surround any dangerous code with a try{} block
+        //                       try{}, catch{}, finally{}
 
-        for (int i = 1; i <= numOfFood; i++) {
-            System.out.print("Enter food #" + i + ": ");
-            String food = scanner.nextLine();
-            foods.add(food);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter a number: ");
+            int number = scanner.nextInt();
+            System.out.println(number);
         }
-
-        System.out.println("My array list of food: " + foods);
-        scanner.close();
+        catch (InputMismatchException e) {
+            System.out.println("That wasn't a number!");
+        }
+        catch (ArithmeticException e) {
+            System.out.println("YOU CAN'T DIVIDE BY ZERO!");
+        }
+        catch (Exception e) {
+            // SAFETY NET
+            System.out.println("Something went wrong");
+        }
+        finally {
+            System.out.println("This always executes");
+        }
     }
 }
