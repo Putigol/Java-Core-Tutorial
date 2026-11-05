@@ -1,15 +1,18 @@
 public class Main {
     public static void main(String[] args) {
 
-        // Họ giúp bảo vệ dữ liệu đối tượng và thêm các quy tắc để truy cập hoặc sửa đổi chúng.
-        // GETTERS = Các phương thức làm cho một trường có thể ĐỌC được.
-        // SETTERS = Các phương thức làm cho một trường có thể GHI được.
+        // Aggregation = Represents a "has-a" relationship between objects.
+        // One object contains another object as part of its structure,
+        // but the contained object/s can exist independently.
 
-        Car car = new Car("Charger", "Yellow", 10000);
+        Book book1 = new Book("The Fellow of the Ring", 423);
+        Book book2 = new Book("The Two Towers", 352);
+        Book book3 = new Book("The Return of the King", 416);
 
-        car.setColor("Blue");
-        car.setPrice(5000);
+        Book[] books = {book1, book2, book3};
 
-        System.out.println(car.getColor() + " " + car.getModel() + " " + car.getPrice());
+        Library library = new Library("NYC Public Library", 1897, books);
+
+        library.displayInfo();
     }
 }
