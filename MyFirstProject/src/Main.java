@@ -1,23 +1,29 @@
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
-// Sử dụng lớp Box với String (7:05-7:53)
-        Box box = new Box<>();
-        box.setItem("Banana");
-        System.out.println(box.getItem());
+// Tạo HashMap
+        HashMap<String, Double> map = new HashMap<>();
 
-        // Sử dụng lớp Box với Integer (8:02-8:20)
-        Box intBox = new Box<>();
-        intBox.setItem(3);
-        System.out.println(intBox.getItem());
+        // Thêm phần tử (put method)
+        map.put("Apple", 0.50);
+        map.put("Orange", 0.75);
+        map.put("Banana", 0.25);
+        map.put("Coconut", 1.00);
 
-        // Sử dụng lớp Product với String và Double (10:52-12:30)
-        Product product1 = new Product<>("Apple", 0.5);
-        System.out.println(product1.getItem());
-        System.out.println(product1.getPrice());
+        // Xóa phần tử (remove method)
+        map.remove("Apple");
 
-        // Sử dụng lớp Product với String và Integer (12:51-13:26)
-        Product product2 = new Product<>("Ticket", 15);
-        System.out.println(product2.getItem());
-        System.out.println(product2.getPrice());
+        // Lấy giá trị (get method)
+        // System.out.println(map.get("Coconut"));
+
+        // Kiểm tra key hoặc value
+        // System.out.println(map.containsKey("Banana"));
+        // System.out.println(map.containsValue(1.0));
+
+        // Duyệt qua map sử dụng keySet
+        for (String key : map.keySet()) {
+            System.out.println(key + ": $" + map.get(key));
+        }
     }
 }
