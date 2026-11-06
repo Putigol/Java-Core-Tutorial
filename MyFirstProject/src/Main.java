@@ -1,33 +1,23 @@
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Main {
     public static void main(String[] args) {
-// Khởi tạo đối tượng Scanner để nhận đầu vào từ người dùng
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter number of seconds to countdown from: ");
-        int response = scanner.nextInt();
+// Sử dụng lớp Box với String (7:05-7:53)
+        Box box = new Box<>();
+        box.setItem("Banana");
+        System.out.println(box.getItem());
 
-        Timer timer = new Timer();
+        // Sử dụng lớp Box với Integer (8:02-8:20)
+        Box intBox = new Box<>();
+        intBox.setItem(3);
+        System.out.println(intBox.getItem());
 
-        // Tạo tác vụ TimerTask với lớp ẩn danh (anonymous class)
-        TimerTask task = new TimerTask() {
-            int count = response;
+        // Sử dụng lớp Product với String và Double (10:52-12:30)
+        Product product1 = new Product<>("Apple", 0.5);
+        System.out.println(product1.getItem());
+        System.out.println(product1.getPrice());
 
-            @Override
-            public void run() {
-                if (count > 0) {
-                    System.out.println(count);
-                    count--;
-                } else {
-                    System.out.println("Happy New Year");
-                    timer.cancel(); // Dừng bộ đếm thời gian
-                }
-            }
-        };
-
-        // Lên lịch thực thi tác vụ: bắt đầu ngay (0) và lặp lại mỗi 1 giây (1000ms)
-        timer.scheduleAtFixedRate(task, 0, 1000);
+        // Sử dụng lớp Product với String và Integer (12:51-13:26)
+        Product product2 = new Product<>("Ticket", 15);
+        System.out.println(product2.getItem());
+        System.out.println(product2.getPrice());
     }
 }
