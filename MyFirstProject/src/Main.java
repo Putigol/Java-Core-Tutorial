@@ -1,29 +1,21 @@
-import java.util.HashMap;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-// Tạo HashMap
-        HashMap<String, Double> map = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a day of the week: ");
+        String response = scanner.nextLine().toUpperCase();
 
-        // Thêm phần tử (put method)
-        map.put("Apple", 0.50);
-        map.put("Orange", 0.75);
-        map.put("Banana", 0.25);
-        map.put("Coconut", 1.00);
+        try {
+            Day day = Day.valueOf(response);
 
-        // Xóa phần tử (remove method)
-        map.remove("Apple");
-
-        // Lấy giá trị (get method)
-        // System.out.println(map.get("Coconut"));
-
-        // Kiểm tra key hoặc value
-        // System.out.println(map.containsKey("Banana"));
-        // System.out.println(map.containsValue(1.0));
-
-        // Duyệt qua map sử dụng keySet
-        for (String key : map.keySet()) {
-            System.out.println(key + ": $" + map.get(key));
+            switch (day) {
+                case MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY -> System.out.println("It is a weekday");
+                case SATURDAY, SUNDAY, PIZZA_DAY -> System.out.println("It is the weekend");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please enter a valid day");
         }
+        scanner.close();
     }
 }
