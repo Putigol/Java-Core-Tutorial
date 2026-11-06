@@ -2,21 +2,27 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        // Threading = Allows a program to run multiple tasks simultaneously
+        //                       Helps improve performance with time-consuming operations
+        //                      (File I/O, network communications, or any background tasks)
+
+        // How to create a Thread
+        // Option 1. Extend the Thread class (simpler)
+        // Option 2. Implement the Runnable interface (better)
+
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a day of the week: ");
-        String response = scanner.nextLine().toUpperCase();
 
-        try {
-            Day day = Day.valueOf(response);
+        MyRunnable myRunnable = new MyRunnable();
+        Thread thread = new Thread(myRunnable);
+        thread.setDaemon(true); // This thread will end when Main thread finishes
+        thread.start();
 
+        System.out.println("You have 10 seconds to enter your name");
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        System.out.println("Hello " + name);
 
-            switch (day) {
-                case MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY -> System.out.println("It is a weekday");
-                case SATURDAY, SUNDAY, PIZZA_DAY -> System.out.println("It is the weekend");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Please enter a valid day");
-        }
         scanner.close();
     }
 }
