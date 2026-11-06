@@ -1,19 +1,30 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Anonymous class = Một lớp không có tên. Không thể tái sử dụng.
-        // Thêm hành vi tùy chỉnh mà không cần tạo lớp mới.
-        // Thường dùng cho các trường hợp sử dụng một lần (TimerTask, Runnable, callbacks)
+        // Timer = Lớp dùng để lập lịch thực hiện các tác vụ
+        // TimerTask = Đại diện cho tác vụ sẽ được thực thi
 
-        Dog dog1 = new Dog();
-        Dog dog2 = new Dog(){
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask(){
+            int count = 3; // Ví dụ về biến đếm để dừng tác vụ
+
             @Override
-            void speak(){
-                System.out.println("Scooby Doo says *Ruh Roh*");
+            public void run(){
+                System.out.println("Hello!");
+                count--;
+
+                if (count <= 0) {
+                    System.out.println("Task complete");
+                    timer.cancel(); // Hủy Timer sau khi hoàn thành
+                }
             }
         };
 
-        dog1.speak();
-        dog2.speak();
+        // Lập lịch thực hiện tác vụ ngay lập tức (0ms) và lặp lại mỗi 1000ms (1 giây)
+        timer.schedule(task, 0, 1000);
     }
 }
