@@ -9,6 +9,7 @@ public class Main {
         try {
             Day day = Day.valueOf(response);
 
+
             switch (day) {
                 case MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY -> System.out.println("It is a weekday");
                 case SATURDAY, SUNDAY, PIZZA_DAY -> System.out.println("It is the weekend");
