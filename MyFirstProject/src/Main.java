@@ -1,28 +1,26 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
-        // Threading = Allows a program to run multiple tasks simultaneously
-        //                       Helps improve performance with time-consuming operations
-        //                      (File I/O, network communications, or any background tasks)
+        // Multithreading = Enables a program to run multiple threads concurrently
+        //                               (Thread = A set of instructions that run independently)
+        //                               Useful for background tasks or time-consuming operations
 
-        // How to create a Thread
-        // Option 1. Extend the Thread class (simpler)
-        // Option 2. Implement the Runnable interface (better)
+        Thread thread1 = new Thread(new MyRunnable("PING"));
+        Thread thread2 = new Thread(new MyRunnable("PONG"));
 
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("GAME START!");
 
-        MyRunnable myRunnable = new MyRunnable();
-        Thread thread = new Thread(myRunnable);
-        thread.setDaemon(true); // This thread will end when Main thread finishes
-        thread.start();
+        thread1.start();
+        thread2.start();
 
-        System.out.println("You have 10 seconds to enter your name");
-        System.out.print("Enter your name: ");
-        String name = scanner.nextLine();
-        System.out.println("Hello " + name);
+        try {
+            thread1.join();
+            thread2.join();
+        }
+        catch (InterruptedException e) {
+            System.out.println("Main thread was interrupted");
+        }
 
-        scanner.close();
+        System.out.println("GAME OVER!");
     }
 }

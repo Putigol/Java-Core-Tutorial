@@ -1,16 +1,20 @@
 public class MyRunnable implements Runnable {
 
+    private final String text;
+
+    public MyRunnable(String text) {
+        this.text = text;
+    }
+
     @Override
     public void run() {
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(text);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1000); // Tạm dừng 1 giây
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("Thread bị gián đoạn");
             }
-            System.out.println("Timer: " + i + " seconds");
         }
-        System.out.println("Time's up!");
-        System.exit(0);
     }
 }
