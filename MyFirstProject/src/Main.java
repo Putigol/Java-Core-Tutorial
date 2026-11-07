@@ -1,26 +1,31 @@
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Multithreading = Enables a program to run multiple threads concurrently
-        //                               (Thread = A set of instructions that run independently)
-        //                               Useful for background tasks or time-consuming operations
+        Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime alarmTime = null;
+        String filePath = "A Caring Friend.wav";
 
-        Thread thread1 = new Thread(new MyRunnable("PING"));
-        Thread thread2 = new Thread(new MyRunnable("PONG"));
+        while(alarmTime == null){
+            try{
+                System.out.print("Enter an alarm time (HH:MM:SS): ");
+                String inputTime = scanner.nextLine();
 
-        System.out.println("GAME START!");
-
-        thread1.start();
-        thread2.start();
-
-        try {
-            thread1.join();
-            thread2.join();
-        }
-        catch (InterruptedException e) {
-            System.out.println("Main thread was interrupted");
+                alarmTime = LocalTime.parse(inputTime, formatter);
+                System.out.println("Alarm set for " + alarmTime);
+            }
+            catch(DateTimeParseException e){
+                System.out.println("Invalid format. Please use HH:MM:SS");
+            }
         }
 
-        System.out.println("GAME OVER!");
+        AlarmClock alarmClock = new AlarmClock(alarmTime, filePath, scanner);
+        Thread alarmThread = new Thread(alarmClock);
+        alarmThread.start();
     }
 }
